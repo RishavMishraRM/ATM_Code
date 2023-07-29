@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+	/*assign full width inputs*/
+	input[type=text],
+    
+	input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	/*set a style for the buttons*/
+	button {
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+	}
+	#log
+	{
+		color: green;
+		background-color: rgb(83, 235, 255);
+		position: absolute;
+        width: 90px;  
+        height: 60px;  
+        top:5px;
+        right: 20px;
+	}
+
+	/* set a hover effect for the button*/
+	button:hover {
+		opacity: 0.8;
+	}
+
+	/*set extra style for the cancel button*/
+	.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+	}
+
+	/*centre the display image inside the container*/
+	.imgcontainer {
+		text-align: center;
+		margin: 24px 0 12px 0;
+		position: relative;
+	}
+
+	/*set image properties*/
+	img.avatar {
+		width: 40%;
+		border-radius: 50%;
+	}
+
+	/*set padding to the container*/
+	.container {
+		padding: 16px;
+	}
+	
+	/*set the forgot password text*/
+	span.psw {
+		float: right;
+		padding-top: 16px;
+	}
+
+	/*set the Modal background*/
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgb(0, 0, 0);
+		background-color: rgba(0, 0, 0, 0.4);
+		padding-top: 60px;
+	}
+
+	/*style the model content box*/
+	.modal-content {
+		background-color: #fefefe;
+		margin: 5% auto 15% auto;
+		border: 1px solid #888;
+		width: 80%;
+	}
+
+	/*style the close button*/
+	.close {
+		position: absolute;
+		right: 25px;
+		top: 0;
+		color: #000;
+		font-size: 35px;
+		font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+		color: red;
+		cursor: pointer;
+	}
+    body 
+    {
+        background-color: rgb(0, 238, 255);
+    }
+    #otta
+    {
+        position: absolute;
+        width: 190px;  
+        height: 60px;  
+        top: 140px;
+        left: 200px;
+    }
+    #ottb
+    {
+        position: absolute;
+        width: 190px;  
+        height: 60px;  
+        top:140px;
+        right: 180px;
+    }
+    #ottc
+    {
+        position: absolute;
+        width: 190px;  
+        height: 60px;  
+        top:300px;
+        left: 200px;
+    }
+    #ottd
+    {
+        position: absolute;
+        width: 190px;  
+        height: 60px;  
+        top: 300px;
+        right: 180px;
+    }
+    #otte
+    {
+        position: absolute;
+        width: 190px;  
+        height: 60px;  
+        top:460px;
+        left: 200px;
+    }
+    #ottf
+    {
+        position: absolute;
+        width: 190px;  
+        height: 60px;  
+        top:460px;
+        right: 180px;
+    }
+    #disc
+    {
+        
+        font-size: 50px;
+        color: rgb(241, 11, 22);
+        background-color:#522ddaba;
+        position: absolute;
+        width: 460px;  
+        height: 60px;  
+        top:-30px;
+        right: 470px;
+    }
+
+	/* add zoom animation*/
+	.animate {
+		-webkit-animation: animatezoom 0.6s;
+		animation: animatezoom 0.6s
+	}
+	
+	@-webkit-keyframes animatezoom {
+		from {
+			-webkit-transform: scale(0)
+		}
+		to {
+			-webkit-transform: scale(1)
+		}
+	}
+	
+	@keyframes animatezoom {
+		from {
+			transform: scale(0)
+		}
+		to {
+			transform: scale(1)
+		}
+	}
+	
+	@media screen and (max-width: 300px) {
+		span.psw {
+			display: block;
+			float: none;
+		}
+		.cancelbtn {
+			width: 100%;
+		}
+	}
+</style>
+
+<body>
+	<a href="login.html"><button id="log">Log Out</button></a>
+
+	<h2 id="disc">Administrator Portal</h2>
+	<!--Step 1 : Adding HTML-->
+	<button onclick="document.getElementById('id01').style.display='block'" id = "otta">Create Customer</button>
+    <button onclick="document.getElementById('id02').style.display='block'" id = "ottb">Branch Details</button>
+    <button onclick="document.getElementById('id03').style.display='block'" id = "ottc">Modify Customer</button>
+    <button onclick="document.getElementById('id04').style.display='block'" id = "ottd">Delete Customer</button>
+    <button onclick="document.getElementById('id05').style.display='block'" id = "otte">Check Credit</button>
+    <button onclick="document.getElementById('id06').style.display='block'" id = "ottf">Account Statement</button>
+	<div id="id01" class="modal">
+		<form class="modal-content animate" action="\action.php">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src=
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEX///9NTU1HR0c+Pj7U1NTPz8+FhYU7OztDQ0Pm5uatra3q6uqpqalGRkY2NjZKSkqRkZGYmJj09PRTU1Pd3d1aWlpqamp8fHyhoaGKiopycnK9vb3IyMhlZWVfX192dnYvLy8lJSW5ubmUcr0PAAAE6ElEQVR4nO2dbXviKBSGMVGJ1YQ2fVOn3c7M//+Rm+61W1MFAuScA9l57s8RuX3ywkkCKgUAAAAAAAAAAAAAAAAAAACAEE+bsnmaqfeqdV02Wr/OkDx21ap8qu6YKnivc3c+EH2fJvjW5e55MN1bkuHK5O54MGaVIrhZyj76id4kGB6b3N2OoEk52Zza3N2OoD0lGG6XcKX4j2oLQxiWDgwLMhwPqiNO5ssx1P2oB3fhV+QFGe5HPTjA8AIMYSgHDF3AEIZywNAFDGEoBwxdwBCGcsDQBQxhKAcMXZRnaBo7P78Zdo6tFmBoznd2DuP7peuDY6tbxeIM24eEDl24fcEAhjCEIQxhCEMYwhCGDFSn/c7OuAe9Y5v97TuFxRmuKm3n17i2OP50bGVprzhDF/+f+tAFDF3AEIZywNAFDGEoBwxdwBCGcizHMHXa20IMTa0fdZ0kuQzDavU533H9njL3bRGG5q9/GzjV8R9ehGHz9QjwNX5+3xIM69+XJh6jj8UFGBozamIXPVd6AYbjCJX6ETuXuHzD60nVp8gTavnznuofV608xx2K1en+wjn8s2KGt/Pi+8j9tGovRPw4YoY3EUqtzCBlaF3a4EFiXr+UoSXCgXeBIkXI0DxaG+oFQhQytEc4DML5D0UZQ0eEA8eEMXgcMoa1e5GYM/caGyKG7ggHKua1bkQMPREq9cR8KEoYmmdva3e86/lIGHojVEnlcAQChhMRqpRyOAIBw6kIh3KYcz/lN5yOMKEcjoDfUIcsmBZbDpdk+HUH0U9kOVySYVCESu3ZRm/choERMpbD3IbhK95xlcPMhsERKrZymNkwZtFCpnKY19C8xzTLUw7zGkauO8lSDrMaxkU4cGY4FFkN9Tq2ZUN/4ec0jI4wqByO/Q04DeMjnCyHG10/t7qJsWQ0NC8JTXvL4ao+fj5i63+bMlYVTIlQ+crh5uXylLyEp2tpEXqeDjcf4y4EK/IZJkboLIeb87etgsstNsPUCJWjHL4SDL/zwWaYHKGy5nMtOJx1AwdAXIbmpkcR3JbDjWWPeAm7ZnEZ6ll/LnFdDre2Xb4PC5HJcFaE6rocbu2Do7A7dEyG3cz/B/lWDjsEh36EXPh5DOdGOOyCj1+9b9zD25DnVjyGsyMcOOt/vqXqPOvih9TMLIbVx3Qb02w+Gq3brffHCrh9xWI470Q6ou+ntpge2nAY0kQYxvQ7jhyGFEdhMJNDGwZDyQjV9NCGwVA0wumhDb1h9Uou4efNP7ShN9S76QZo8b8HQG4oHqGauAdJbtiJRzgxtKE2zBGhf2hDbZgjQuV9X4XYMKk5AjxDG2LDTBH6hja0hrkiVJ6hDa1ht5/+MBPOuQ2khhkjdN+1ITXMGKFyDm0oDZP+h48Q+9CG0lBnjdA1tCE0rDJH6BjaEBqS3Z1Jxza0ocyQvMPRvFmu+3SGRvbmhR3WDIswtPSMcC9tyfsbD6+ha/aWJJZuUV4P6+wn03vuNdn1Kadjv3lhvh4OtHVdmUy0jjVTlrMCTyowhGH5wBCG5QPDP9TwxD2HnpKk+2NHiTVJqGiOCYZr3vnltKS96Mo6+ZoW73oObmRWByKhC5vDesPDUvZTnfxnEoduCefTqjukCiq129a6Lhtdb2c+sN2tyybX82gAAAAAAAAAAAAAAAAAAADwB/I3ORaTI7yINjoAAAAASUVORK5CYII=" alt="Avatar" class="avatar">
+			</div>
+			<div class="container">
+				<label><b>First Name</b></label>
+				<input type="text" placeholder="Enter First Name" name="uname" required><br>
+                <label><b>Middle Name</b></label>
+				<input type="text" placeholder="Enter Middle Name" name="uname" ><br>
+                <label><b>Last Name</b></label>
+				<input type="text" placeholder="Enter Last Name" name="uname" required><br>
+                <label><b>Father's Name</b></label>
+				<input type="text" placeholder="Enter Father's Name" name="uname" required><br><br>
+                <label><b>Date of Bith</b></label>
+				<input type="datetime" placeholder="Enter DOB" name="uname" required><br><br><br>
+                <label><b>Gender</b></label> <br>
+                <input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> Male</label><br>
+                <input type="radio" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> Female</label><br>
+                <input type="radio" id="vehicle3" name="vehicle3" value="Boat">
+                <label for="vehicle3"> Others</label><br><br><br>
+                <label><b>Mobile Number</b></label><br>
+				<input type="number" placeholder="Enter Mobile Number with Country Code" name="uname" required>
+                <br><br><br>
+                <label><b>Address</Address></b></label>
+				<input type="text" placeholder="Enter Address" name="uname" required><br><br>
+                <label><b>Email</b></label>
+				<input type="email" placeholder="Enter Email" name="uname" required>
+                <br><br><br>
+                <label><b>Account Type</b></label><br>
+				<input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> Saving</label><br>
+                <input type="radio" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> Current</label><br><br>
+                <label><b>Pan Number</b></label>
+				<input type="email" placeholder="Enter PAN No." name="uname" required><br><br>
+                
+				<button type="submit">Submit</button>
+				<input type="checkbox" checked="checked"> Save for Draft
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		</form>
+	</div>
+
+
+    <div id="id02" class="modal">
+		<form class="modal-content animate" action="\action.php">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src=
+"https://mma.prnewswire.com/media/326088/Branch_Logo.jpg?p=facebook" alt="Avatar" class="avatar">
+			</div>
+			<div class="container">
+				<label><b> Customer ID</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+				<label><b> Account Number</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+                <label><b> User Name</b></label>
+				<input type="text" placeholder="Enter User Name" name="uname" required><br>
+
+                <label><b>New Branch Details</b></label>
+				<input type="text" placeholder="Add New Branch Details" name="uname" required><br>
+
+				<button type="submit">Submit</button>
+				<input type="checkbox" checked="checked"> Save for Draft
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+				
+			</div>
+		</form>
+	</div>
+
+    <div id="id03" class="modal">
+		<form class="modal-content animate" action="\action.php">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src=
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEX///9NTU1HR0c+Pj7U1NTPz8+FhYU7OztDQ0Pm5uatra3q6uqpqalGRkY2NjZKSkqRkZGYmJj09PRTU1Pd3d1aWlpqamp8fHyhoaGKiopycnK9vb3IyMhlZWVfX192dnYvLy8lJSW5ubmUcr0PAAAE6ElEQVR4nO2dbXviKBSGMVGJ1YQ2fVOn3c7M//+Rm+61W1MFAuScA9l57s8RuX3ywkkCKgUAAAAAAAAAAAAAAAAAAACAEE+bsnmaqfeqdV02Wr/OkDx21ap8qu6YKnivc3c+EH2fJvjW5e55MN1bkuHK5O54MGaVIrhZyj76id4kGB6b3N2OoEk52Zza3N2OoD0lGG6XcKX4j2oLQxiWDgwLMhwPqiNO5ssx1P2oB3fhV+QFGe5HPTjA8AIMYSgHDF3AEIZywNAFDGEoBwxdwBCGcsDQBQxhKAcMXZRnaBo7P78Zdo6tFmBoznd2DuP7peuDY6tbxeIM24eEDl24fcEAhjCEIQxhCEMYwhCGDFSn/c7OuAe9Y5v97TuFxRmuKm3n17i2OP50bGVprzhDF/+f+tAFDF3AEIZywNAFDGEoBwxdwBCGcizHMHXa20IMTa0fdZ0kuQzDavU533H9njL3bRGG5q9/GzjV8R9ehGHz9QjwNX5+3xIM69+XJh6jj8UFGBozamIXPVd6AYbjCJX6ETuXuHzD60nVp8gTavnznuofV608xx2K1en+wjn8s2KGt/Pi+8j9tGovRPw4YoY3EUqtzCBlaF3a4EFiXr+UoSXCgXeBIkXI0DxaG+oFQhQytEc4DML5D0UZQ0eEA8eEMXgcMoa1e5GYM/caGyKG7ggHKua1bkQMPREq9cR8KEoYmmdva3e86/lIGHojVEnlcAQChhMRqpRyOAIBw6kIh3KYcz/lN5yOMKEcjoDfUIcsmBZbDpdk+HUH0U9kOVySYVCESu3ZRm/choERMpbD3IbhK95xlcPMhsERKrZymNkwZtFCpnKY19C8xzTLUw7zGkauO8lSDrMaxkU4cGY4FFkN9Tq2ZUN/4ec0jI4wqByO/Q04DeMjnCyHG10/t7qJsWQ0NC8JTXvL4ao+fj5i63+bMlYVTIlQ+crh5uXylLyEp2tpEXqeDjcf4y4EK/IZJkboLIeb87etgsstNsPUCJWjHL4SDL/zwWaYHKGy5nMtOJx1AwdAXIbmpkcR3JbDjWWPeAm7ZnEZ6ll/LnFdDre2Xb4PC5HJcFaE6rocbu2Do7A7dEyG3cz/B/lWDjsEh36EXPh5DOdGOOyCj1+9b9zD25DnVjyGsyMcOOt/vqXqPOvih9TMLIbVx3Qb02w+Gq3brffHCrh9xWI470Q6ou+ntpge2nAY0kQYxvQ7jhyGFEdhMJNDGwZDyQjV9NCGwVA0wumhDb1h9Uou4efNP7ShN9S76QZo8b8HQG4oHqGauAdJbtiJRzgxtKE2zBGhf2hDbZgjQuV9X4XYMKk5AjxDG2LDTBH6hja0hrkiVJ6hDa1ht5/+MBPOuQ2khhkjdN+1ITXMGKFyDm0oDZP+h48Q+9CG0lBnjdA1tCE0rDJH6BjaEBqS3Z1Jxza0ocyQvMPRvFmu+3SGRvbmhR3WDIswtPSMcC9tyfsbD6+ha/aWJJZuUV4P6+wn03vuNdn1Kadjv3lhvh4OtHVdmUy0jjVTlrMCTyowhGH5wBCG5QPDP9TwxD2HnpKk+2NHiTVJqGiOCYZr3vnltKS96Mo6+ZoW73oObmRWByKhC5vDesPDUvZTnfxnEoduCefTqjukCiq129a6Lhtdb2c+sN2tyybX82gAAAAAAAAAAAAAAAAAAADwB/I3ORaTI7yINjoAAAAASUVORK5CYII=" alt="Avatar" class="avatar">
+			</div>
+			<div class="container">
+                <label><b>Account Number</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+				<label><b>First Name</b></label>
+				<input type="text" placeholder="Enter First Name" name="uname" required><br>
+                <label><b>Middle Name</b></label>
+				<input type="text" placeholder="Enter Middle Name" name="uname" ><br>
+                <label><b>Last Name</b></label>
+				<input type="text" placeholder="Enter Last Name" name="uname" required><br>
+                <label><b>Father's Name</b></label>
+				<input type="text" placeholder="Enter Father's Name" name="uname" required><br><br>
+                <label><b>Date of Bith</b></label>
+				<input type="datetime" placeholder="Enter DOB" name="uname" required><br><br><br>
+                <label><b>Gender</b></label> <br>
+                <input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> Male</label><br>
+                <input type="radio" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> Female</label><br>
+                <input type="radio" id="vehicle3" name="vehicle3" value="Boat">
+                <label for="vehicle3"> Others</label><br><br><br>
+                <label><b>Mobile Number</b></label><br>
+				<input type="number" placeholder="Enter Mobile Number with Country Code" name="uname" required>
+                <br><br><br>
+                <label><b>Address</Address></b></label>
+				<input type="text" placeholder="Enter Address" name="uname" required><br><br>
+                <label><b>Email</b></label>
+				<input type="email" placeholder="Enter Email" name="uname" required>
+                <br><br><br>
+                <label><b>Account Type</b></label><br>
+				<input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> Saving</label><br>
+                <input type="radio" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> Current</label><br><br>
+                <label><b>Pan Number</b></label>
+				<input type="email" placeholder="Enter PAN No." name="uname" required><br><br>
+                <label><b>Opening balance </b></label>
+				<input type="text" placeholder="Enter Opening balance " name="uname" required><br><br>
+				<button type="submit">Submit</button>
+				<input type="checkbox" checked="checked"> Save for Draft
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		</form>
+	</div>
+
+    <div id="id04" class="modal">
+		<form class="modal-content animate" action="\action.php">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src=
+"https://i.gadgets360cdn.com/large/delete_apps_thumb_1532676846539.jpg" alt="Avatar" class="avatar">
+			</div>
+			<div class="container">
+
+				<label><b> Customer ID</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+				<label><b> Account Number</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+                <label><b> User Name</b></label>
+				<input type="text" placeholder="Enter User Name" name="uname" required><br>
+
+                <label><b>Reason</b></label>
+				<input type="text" placeholder="Reason to Delete Customer" name="uname" required><br>
+
+				<button type="submit">Submit</button>
+				<input type="checkbox" checked="checked"> Save for Draft
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button>
+				
+			</div>
+		</form>
+	</div>
+
+    <div id="id05" class="modal">
+		<form class="modal-content animate" action="\action.php">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src=
+"https://www.wikihow.com/images/thumb/1/1d/Check-Your-Credit-Score-Step-6-Version-3.jpg/v4-460px-Check-Your-Credit-Score-Step-6-Version-3.jpg.webp" alt="Avatar" class="avatar">
+			</div>
+			<div class="container">
+
+				<label><b> Customer ID</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+				<label><b> Account Number</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+                <label><b> Credit Card Number</b></label>
+				<input type="text" placeholder="Enter Credit Card Number" name="uname" required><br>
+
+
+				<button type="submit">Submit</button>
+				<input type="checkbox" checked="checked"> Save for Draft
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Cancel</button>
+				
+			</div>
+		</form>
+	</div>
+
+    <div id="id06" class="modal">
+		<form class="modal-content animate" action="\action.php">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src=
+"https://previews.123rf.com/images/outchill/outchill1711/outchill171106720/89203666-bank-statement-text-written-on-red-lacey-border-round-vintage-textured-badge-stamp-.jpg" alt="Avatar" class="avatar">
+			</div>
+			<div class="container">
+
+
+				<label><b> Customer ID</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+				<label><b> Account Number</b></label>
+				<input type="text" placeholder="Enter Account Number" name="uname" required><br>
+
+               
+				<button type="submit">Submit</button>
+				<input type="checkbox" checked="checked"> Save for Draft
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id06').style.display='none'" class="cancelbtn">Cancel</button>
+				
+			</div>
+		</form>
+	</div>
+
+
+	<script>
+		var modal = document.getElementById('id01');
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+</body>
+
+</html>
